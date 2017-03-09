@@ -66,7 +66,7 @@ module TypeformData
             raise UnexpectedError, 'Falsy field ID for answer(s)'
           end
 
-          fields.find { |field| field.id.to_s == field_id }.tap { |matched|
+          fields.find { |field| field.question_ids.include?(id) }.tap { |matched|
             raise UnexpectedError, 'Expected to find a matching field' unless matched
           }
         }.map { |field, ids_and_values|
